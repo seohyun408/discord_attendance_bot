@@ -73,7 +73,7 @@ async def scheduler():
 
     if (h, m) == MORNING_CHECK:
         print("[bot] Running morning attendance check…")
-        await asyncio.get_event_loop().run_in_executor(
+        await asyncio.get_running_loop().run_in_executor(
             None, update_attendance, "morning", dict(first_join_times)
         )
 
@@ -82,7 +82,7 @@ async def scheduler():
             print(f"[bot] Skipping afternoon check (weekday={now.weekday()})")
         else:
             print("[bot] Running afternoon attendance check…")
-            await asyncio.get_event_loop().run_in_executor(
+            await asyncio.get_running_loop().run_in_executor(
                 None, update_attendance, "afternoon", dict(first_join_times)
             )
 

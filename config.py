@@ -24,8 +24,8 @@ SHEET_NAME_MAP = {
     "서비스기획": "박나혜",
 }
 
-# 오전 체크: 7:30 KST
-MORNING_CHECK = (7, 30)
+# 오전 체크: 7:40 KST (7:00 기준 30분 지각자까지 포착)
+MORNING_CHECK = (7, 40)
 # 오후 체크: 15:30 KST
 AFTERNOON_CHECK = (15, 30)
 # 수요일 오후는 체크 안 함 (0=월, 2=수)
