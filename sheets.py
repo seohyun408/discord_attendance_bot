@@ -125,8 +125,10 @@ def _calc_status(join_dt: datetime | None, discord_name: str, session: str, now:
     if diff <= 10:
         return True
     elif diff <= 20:
-        return "20분 지각"
+        return "10분 지각"
     elif diff <= 30:
+        return "20분 지각"
+    elif diff <= 40:
         return "30분 지각"
     else:
         return "불참"
