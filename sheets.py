@@ -5,7 +5,7 @@ from datetime import datetime
 import gspread
 from google.oauth2.service_account import Credentials
 
-from config import KST, SPREADSHEET_ID, SHEET_NAME, SHEET_NAME_MAP
+from config import KST, SPREADSHEET_ID, SHEET_NAME, SHEET_NAME_MAP, DATE_COL_INDEX, MEMBER_COL_MAP
 
 SCOPES = [
     "https://spreadsheets.google.com/feeds",
@@ -35,26 +35,10 @@ def format_date_key(dt: datetime, session: str) -> str:
     return f"{dt.month}.{dt.day} {_day_name(dt.weekday())} {suffix}"
 
 
-def _find_col_indices(all_values: list[list]) -> dict[str, int]:
-    """Find 0-based column index for each member by scanning header rows."""
-    col_map = {}
-    for row in all_values:
-        for sheet_name in SHEET_NAME_MAP.values():
-            if sheet_name in row:
-                for discord_key, sname in SHEET_NAME_MAP.items():
-                    try:
-                        col_map[discord_key] = row.index(sname)
-                    except ValueError:
-                        pass
-                if len(col_map) == len(SHEET_NAME_MAP):
-                    return col_map
-    return col_map
-
-
 def _find_date_row(all_values: list[list], date_key: str) -> int | None:
-    """Return 0-based row index matching date_key in column B (index 1)."""
+    """Return 0-based row index matching date_key in column L (index 11)."""
     for i, row in enumerate(all_values):
-        if len(row) > 1 and row[1].strip() == date_key:
+        if len(row) > DATE_COL_INDEX and row[DATE_COL_INDEX].strip() == date_key:
             return i
     return None
 
@@ -80,15 +64,10 @@ def update_attendance(session: str, join_times: dict[str, datetime]):
         print(f"[sheets] Row not found for '{date_key}'")
         return
 
-    col_map = _find_col_indices(all_values)
-    if not col_map:
-        print("[sheets] Could not determine column indices from sheet header")
-        return
-
     updates = []
     row_data = all_values[row_idx]
 
-    for discord_name, col_idx in col_map.items():
+    for discord_name, col_idx in MEMBER_COL_MAP.items():
         current = row_data[col_idx] if col_idx < len(row_data) else ""
         if not _cell_is_updatable(current):
             print(f"[sheets] Skip {SHEET_NAME_MAP[discord_name]}: already '{current}'")

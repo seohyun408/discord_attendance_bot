@@ -15,13 +15,26 @@ MEMBERS = {
     "서비스기획": {"real_name": "박나혜",  "morning_start": 7},
 }
 
-# 시트에서 멤버 이름이 쓰이는 방식 (header 행 검색용)
+# 시트에서 멤버 이름이 쓰이는 방식
 SHEET_NAME_MAP = {
     "UXUI":    "오상훈",
     "HR":      "심하연",
     "Seohyun": "이서현",
     "FE":      "이상희",
     "서비스기획": "박나혜",
+}
+
+# 날짜가 있는 열 (L열, 0-based index 11)
+DATE_COL_INDEX = 11
+
+# discord display name → 시트 열 (0-based index)
+# M=12(오상훈), N=13(심하연), O=14(이서현), Q=16(이상희), R=17(박나혜)
+MEMBER_COL_MAP = {
+    "UXUI":    12,
+    "HR":      13,
+    "Seohyun": 14,
+    "FE":      16,
+    "서비스기획": 17,
 }
 
 # 오전 체크: 7:40 KST (7:00 기준 30분 지각자까지 포착)
