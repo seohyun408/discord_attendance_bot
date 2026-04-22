@@ -29,12 +29,13 @@ DATE_COL_INDEX = 11
 
 # discord display name → 시트 열 (0-based index)
 # M=12(오상훈), N=13(심하연), O=14(이서현), Q=16(이상희), R=17(박나혜)
+# key는 반드시 MEMBERS / SHEET_NAME_MAP 의 key(= discord display_name)와 동일해야 함
 MEMBER_COL_MAP = {
-    "UXUI":    12,
-    "HR":      13,
-    "Seohyun": 14,
-    "FE":      16,
-    "서비스기획": 17,
+    "오상훈(UXUI)":    12,
+    "심하연(HR)":      13,
+    "Seohyun":         14,
+    "이상희(FE)":      16,
+    "박나혜(서비스기획)": 17,
 }
 
 # 오전 체크: 7:40 KST (7:00 기준 30분 지각자까지 포착)
