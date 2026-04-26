@@ -11,7 +11,7 @@ MEMBERS = {
     "오상훈(UXUI)":    {"real_name": "오상훈", "morning_start": 7},
     "심하연(HR)":      {"real_name": "심하연", "morning_start": 7},
     "Seohyun":        {"real_name": "이서현", "morning_start": 7},
-    "이상희(FE)":      {"real_name": "이상희", "morning_start": 7},
+    "이상희(FE)":      {"real_name": "이상희", "morning_start": 6},
     "박나혜(서비스기획)": {"real_name": "박나혜",  "morning_start": 7},
 }
 
@@ -38,9 +38,9 @@ MEMBER_COL_MAP = {
     "박나혜(서비스기획)": 17,
 }
 
-# 오전 체크: 7:40 KST (7:00 기준 30분 지각자까지 포착)
+# 오전 체크: 7:40 KST (멤버별 morning_start 기준으로 지각 계산)
 MORNING_CHECK = (7, 40)
 # 오후 체크: 15:30 KST
-AFTERNOON_CHECK = (15, 30)
+AFTERNOON_CHECK = (14, 40)
 # 수요일 오후는 체크 안 함 (0=월, 2=수)
 SKIP_AFTERNOON_WEEKDAYS = {2}
