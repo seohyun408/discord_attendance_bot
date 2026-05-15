@@ -11,7 +11,7 @@ MEMBERS = {
     "오상훈(UXUI)":    {"real_name": "오상훈", "morning_start": 7},
     "심하연(HR)":      {"real_name": "심하연", "morning_start": 7},
     "Seohyun":        {"real_name": "이서현", "morning_start": 7},
-    "이상희(FE)":      {"real_name": "이상희", "morning_start": 6},
+    "이상희(FE)":      {"real_name": "이상희", "morning_start": 7},
     "박나혜(서비스기획)": {"real_name": "박나혜",  "morning_start": 7},
 }
 
