@@ -24,8 +24,8 @@ SHEET_NAME_MAP = {
     "박나혜(서비스기획)": "박나혜",
 }
 
-# 날짜가 있는 열 (L열, 0-based index 11)
-DATE_COL_INDEX = 11
+# 날짜가 있는 열 (K열, 0-based index 11)
+DATE_COL_INDEX = 10
 
 # discord display name → 시트 열 (0-based index)
 # M=12(오상훈), N=13(심하연), O=14(이서현), Q=16(이상희), R=17(박나혜)
@@ -43,4 +43,4 @@ MORNING_CHECK = (7, 40)
 # 오후 체크: 15:30 KST
 AFTERNOON_CHECK = (14, 40)
 # 수요일 오후는 체크 안 함 (0=월, 2=수)
-SKIP_AFTERNOON_WEEKDAYS = {2}
+# SKIP_AFTERNOON_WEEKDAYS = {2}

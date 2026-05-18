@@ -7,7 +7,7 @@ from discord.ext import tasks
 
 from config import (
     KST, MEMBERS, VOICE_CHANNEL_NAME,
-    MORNING_CHECK, AFTERNOON_CHECK, SKIP_AFTERNOON_WEEKDAYS,
+    MORNING_CHECK, AFTERNOON_CHECK, #SKIP_AFTERNOON_WEEKDAYS,
 )
 from sheets import update_attendance
 
@@ -78,13 +78,13 @@ async def scheduler():
         )
 
     elif (h, m) == AFTERNOON_CHECK:
-        if now.weekday() in SKIP_AFTERNOON_WEEKDAYS:
-            print(f"[bot] Skipping afternoon check (weekday={now.weekday()})")
-        else:
-            print("[bot] Running afternoon attendance check…")
-            await asyncio.get_running_loop().run_in_executor(
-                None, update_attendance, "afternoon", dict(first_join_times)
-            )
+        # if now.weekday() in SKIP_AFTERNOON_WEEKDAYS:
+        #     print(f"[bot] Skipping afternoon check (weekday={now.weekday()})")
+        # else:
+        print("[bot] Running afternoon attendance check…")
+        await asyncio.get_running_loop().run_in_executor(
+            None, update_attendance, "afternoon", dict(first_join_times)
+        )
 
 
 if __name__ == "__main__":
