@@ -31,11 +31,11 @@ DATE_COL_INDEX = 10
 # M=12(오상훈), N=13(심하연), O=14(이서현), Q=16(이상희), R=17(박나혜)
 # key는 반드시 MEMBERS / SHEET_NAME_MAP 의 key(= discord display_name)와 동일해야 함
 MEMBER_COL_MAP = {
-    "오상훈(UXUI)":    12,
-    "심하연(HR)":      13,
-    "Seohyun":         14,
-    "이상희(FE)":      15,
-    "박나혜(서비스기획)": 16,
+    "오상훈(UXUI)":    11,
+    "심하연(HR)":      12,
+    "Seohyun":         13,
+    "이상희(FE)":      14,
+    "박나혜(서비스기획)": 15,
 }
 
 # 오전 체크: 7:40 KST (멤버별 morning_start 기준으로 지각 계산)
