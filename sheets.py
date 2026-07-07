@@ -68,6 +68,9 @@ def update_attendance(session: str, join_times: dict[str, datetime]):
     row_data = all_values[row_idx]
 
     for discord_name, col_idx in MEMBER_COL_MAP.items():
+        if discord_name == "오상훈(UXUI)" and session == "afternoon":
+            continue
+
         current = row_data[col_idx] if col_idx < len(row_data) else ""
         if not _cell_is_updatable(current):
             print(f"[sheets] Skip {SHEET_NAME_MAP[discord_name]}: already '{current}'")
@@ -89,6 +92,13 @@ def update_attendance(session: str, join_times: dict[str, datetime]):
 
 def _calc_status(join_dt: datetime | None, discord_name: str, session: str, now: datetime):
     from config import MEMBERS
+
+    # 오상훈: 아침만 참석 체크, 시간 관계없이 참석만 하면 출석 인정
+    if discord_name == "오상훈(UXUI)":
+        if join_dt is None or join_dt.date() != now.date():
+            return "불참"
+        return True
+
     if join_dt is None or join_dt.date() != now.date():
         return "불참"
 
@@ -103,11 +113,7 @@ def _calc_status(join_dt: datetime | None, discord_name: str, session: str, now:
 
     if diff <= 10:
         return True
-    elif diff <= 20:
-        return "10분 지각"
     elif diff <= 30:
-        return "20분 지각"
-    elif diff <= 40:
-        return "30분 지각"
+        return "10분 지각"
     else:
-        return "불참"
+        return "30분이상 지각"
